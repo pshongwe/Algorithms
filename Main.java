@@ -1,6 +1,8 @@
 public class Main{
 
 
+	private static char [] memo;
+
 	public static String convertCase(String input){
 		String result = "";
 		for(int i = 0; i < input.length(); i++){
@@ -21,6 +23,8 @@ public class Main{
 		return result;
 	}
 
+
+
 	public static String convertCaseRec(String input){
 		
 		int slength = input.length();
@@ -28,12 +32,19 @@ public class Main{
 		if(input.equals(null) || slength == 0){
 			return "";
 		}
-		else{
-			char fc = input.charAt(slength-1);
-			fc = flip(fc);
-	
-			return convertCaseRec(input.substring(0, slength - 1))+""+fc;
+		else if(memo != null){
+				if(memo[slength - 1] == (input.charAt(slength - 1))){
+					return memo[slength - 1]+"";
+				}
+				else{
+					char fc = input.charAt(slength-1);
+					fc = flip(fc);
+					memo[slength - 1] = fc;
+					return convertCaseRec(input.substring(0, slength - 1))+""+fc;
+				}
 		}
+
+		return new String(memo);
 	}
 
 	public static char flip(char c){
@@ -50,7 +61,7 @@ public class Main{
 
 	public static void main(String [] args){
 		String str = "HolIdAy";
-
+		memo = new char[str.length()];
 		System.out.println(convertCase(str));
 		System.out.println(convertCaseRec(str));
 		
