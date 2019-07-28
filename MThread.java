@@ -1,7 +1,8 @@
-public class Main{
+public class MThread extends Thread{
 
 
 	private static char [] memo;
+	private static String str = "HoLidAY";
 
 	public static String convertCase(String input){
 		String result = "";
@@ -16,9 +17,7 @@ public class Main{
 				current = Character.toUpperCase(current);
 				result += current;
 			}
-			else{
-				result += current;
-			}
+			continue;
 			
 		}
 
@@ -62,13 +61,36 @@ public class Main{
 	}
 
 	
-	private static String str = "HoLi_dAY";
+
 	public static void main(String [] args){
 		
 		memo = new char[str.length()];
-		System.out.println(convertCase(str));
-		System.out.println(convertCaseRec(str));
+		Main m = new Main();
+		Thread t1 = new Thread(new ThreadA());
+		Thread t2 = new Thread(new ThreadB());
+		t1.start();
+		t2.start();
+
+		m.start();
+
+	}
+
+
+class ThreadA implements Runnable {	
+	public void run(){
+
+		System.out.println(MThread.convertCaseRec(str));
 		
 	}
 
+}
+
+class ThreadB implements Runnable {
+
+	public void run(){
+
+		System.out.println(MThread.convertCase(str));
+	}
+
+}
 }
