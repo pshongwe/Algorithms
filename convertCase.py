@@ -4,7 +4,6 @@ def convertCaseNaive(input):
 	if(isinstance(input, str)):
 		for i in range(len(input)):
 			current = input[i]
-
 			if(current.isupper()):
 				current = current.lower()
 				result += current
@@ -15,7 +14,6 @@ def convertCaseNaive(input):
 				result += current
 		return result
 
-memo = []
 def convertCaseRec(input, n):
 	memo = list('')
 	if input is None or n == 0:
