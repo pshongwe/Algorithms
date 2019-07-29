@@ -2,5 +2,5 @@
 Naive+Improvement
 
 ## Tools
-* [ ] Loops, Dynamic Programming
+* [ ] Loops, Dynamic Programming, Lambda Function
 * [ ] Java, Python
