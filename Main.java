@@ -66,7 +66,13 @@ public class Main{
 	public static void main(String [] args){
 		
 		memo = new char[str.length()];
+		
+		long startTime = System.nanoTime();
 		System.out.println(convertCase(str));
+		long endTime = System.nanoTime();
+		long durationInNano = (endTime - startTime);  //Total execution time in nano seconds
+		
+	
 		System.out.println(convertCaseRec(str));
 		
 	}
