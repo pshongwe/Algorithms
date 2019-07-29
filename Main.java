@@ -1,13 +1,10 @@
 public class Main{
-
-
 	private static char [] memo;
-
+	
 	public static String convertCase(String input){
 		String result = "";
 		for(int i = 0; i < input.length(); i++){
 			char current = input.charAt(i);
-
 			if(Character.isUpperCase(current)){
 				current = Character.toLowerCase(current);
 				result += current;
@@ -16,28 +13,19 @@ public class Main{
 				current = Character.toUpperCase(current);
 				result += current;
 			}
-			else{
-				result += current;
-			}
-			
+			else result += current;		
 		}
-
 		return result;
 	}
 
-
-
-	public static String convertCaseRec(String input){
-		
+	public static String convertCaseRec(String input){		
 		int slength = input.length();
 		
-		if(input.equals(null) || slength == 0){
-			return "";
-		}
+		if(input.equals(null) || slength == 0)
+			return "";		
 		else if(memo != null){
-				if(memo[slength - 1] == (input.charAt(slength - 1))){
+				if(memo[slength - 1] == (input.charAt(slength - 1)))
 					return memo[slength - 1]+"";
-				}
 				else{
 					char fc = input.charAt(slength-1);
 					fc = flip(fc);
@@ -45,7 +33,6 @@ public class Main{
 					return convertCaseRec(input.substring(0, slength - 1))+""+fc;
 				}
 		}
-
 		return new String(memo);
 	}
 
@@ -54,21 +41,14 @@ public class Main{
 		if(Character.isUpperCase(c)){
 			res = Character.toLowerCase(c);
 		}
-		else{
-			res = Character.toUpperCase(c);
-		}
-
+		else res = Character.toUpperCase(c);
 		return res;
 	}
-
 	
 	private static String str = "HoLi_dAY";
 	public static void main(String [] args){
-		
 		memo = new char[str.length()];
 		System.out.println(convertCase(str));
 		System.out.println(convertCaseRec(str));
-		
 	}
-
 }
