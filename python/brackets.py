@@ -1,9 +1,9 @@
 # takes a string and returns a boolean True or False indicating whether the bracket is paired or not
-def bracketsPaired(expression):
-     expression = expression.strip(' ')
+def bracketsPaired(sentence):
+     sentence = sentence.strip(' ')
      stack = []
  
-     for char in expression:
+     for char in sentence:
          if char in ["(","{","["]:
              stack.append(char)
          else:
