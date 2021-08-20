@@ -24,4 +24,5 @@ def bracketsPaired(expression):
      return True
  
  
- print(bracketsPaired("[][]"))
+ print(bracketsPaired("[] []"))
+      print(bracketsPaired("[ []"))
