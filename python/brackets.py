@@ -25,4 +25,4 @@ def bracketsPaired(expression):
  
  
  print(bracketsPaired("[] []"))
-      print(bracketsPaired("[ []"))
+ print(bracketsPaired("[ []"))
