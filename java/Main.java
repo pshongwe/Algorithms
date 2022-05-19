@@ -74,13 +74,35 @@ public class Main{
 		else res = Character.toUpperCase(c);
 		return res;
 	}
-	
+
+ private static void checkEquals(String result, String expected) throws Exception {
+        if (!result.equals(expected)) {
+            throw new Exception("Expected: " + expected + " Received: " + result);
+        }
+    }
+
 	private static String str = "HoLi_dAY";
-	public static void main(String [] args){
+	public static void main(String [] args) throws Exception{
 		memo = new char[str.length()];
 		
 		System.out.println(convertCase(str));	
 		System.out.println(convertCaseRec(str));
+
+		String result = Main.getReversedName("James");
+        checkEquals(result, "semaJ");
+
+        System.out.println("Requirement 1 was successful");
+
+        result = Main.getReversedName("J@me$");
+        checkEquals(result, "e@mJ$");
+
+        result = Main.getReversedName("J@m3$ 3ond!");
+        checkEquals(result, "d@no$3 3mJ!");
+
+        result = Main.getReversedName("J[a]me$s %Bo$nd% I^I*I");
+        checkEquals(result, "I[I]I $dn%oB$ s%em^a*J");
+
+        System.out.println("Requirement 2 was successful");
 
 	}
 }
