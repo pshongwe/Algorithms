@@ -1,6 +1,36 @@
 public class Main{
 	private static char [] memo;
-	
+
+
+	public static String getReversedName(String aString) {
+        String result = "";
+        int i = 0;
+        int j = aString.length() - 1;
+        char [] array = aString.toCharArray();
+        while(i < j){
+            if(isSpecialCharacter(aString.charAt(i))){
+               i++;
+            }
+            else if(isSpecialCharacter(aString.charAt(j))){
+                j--;
+            }
+            else{
+                char temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                i++;
+                j--;
+            }
+        }
+        result = new String(array);
+        return result;
+
+    }
+
+    private static boolean isSpecialCharacter(char aCharacter) {
+        return !(Character.isSpaceChar(aCharacter) || Character.isLetterOrDigit(aCharacter));
+    }
+
 	public static String convertCase(String input){
 		String result = "";
 		for(int i = 0; i < input.length(); i++){
@@ -49,12 +79,8 @@ public class Main{
 	public static void main(String [] args){
 		memo = new char[str.length()];
 		
-		long startTime = System.nanoTime();
-		System.out.println(convertCase(str));
-		long endTime = System.nanoTime();
-		long durationInNano = (endTime - startTime);  //Total execution time in nano seconds
-		
-	
+		System.out.println(convertCase(str));	
 		System.out.println(convertCaseRec(str));
+
 	}
 }
