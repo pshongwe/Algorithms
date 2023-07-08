@@ -5,7 +5,7 @@ function binarySearch(searchList, value) {
 
   while (startIndex <= endIndex) {
     let middleIndex = Math.floor((startIndex + endIndex) / 2);
-    arrayPath.push(middleIndex);
+    arrayPath.push(searchList[middleIndex]);
 
     if (searchList[middleIndex] === value) {
       return arrayPath;
@@ -16,5 +16,5 @@ function binarySearch(searchList, value) {
     }
   }
 
-  return arrayPath;
+  return "Value Not Found";
 }
